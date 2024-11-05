@@ -72,7 +72,7 @@ public class OSXAdapter extends ApplicationAdapter {
     if (adapter == null) {
       adapter = new OSXAdapter(inApp);
     }
-    app.addApplicationListener(adapter);
+//    app.addApplicationListener(adapter);
   }
   
   // Another static entry point for EAWT functionality.  Enables the 
@@ -81,7 +81,7 @@ public class OSXAdapter extends ApplicationAdapter {
     if (app == null) {
       app = new com.apple.eawt.Application();
     }
-    app.setEnabledPreferencesMenu(enabled);
+//    app.setEnabledPreferencesMenu(enabled);
   }
 
 }
