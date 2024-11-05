@@ -195,6 +195,25 @@
     <testSourceDirectory>test/src</testSourceDirectory>
     <plugins>
       <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+              <excludes>
+                  <exclude>edu/stanford/nlp/international/</exclude>
+                  <exclude>edu/stanford/nlp/trees/international/**</exclude>
+                  <exclude>edu/stanford/nlp/pipeline/StanfordCoreNLPServer.java</exclude>
+                  <exclude>edu/stanford/nlp/pipeline/StanfordCoreNLPClient.java</exclude>
+                  <exclude>edu/stanford/nlp/parser/server/</exclude>
+                  <exclude>edu/stanford/nlp/patterns/**/</exclude>
+                  <exclude>edu/stanford/nlp/util/GoogleNGramsSQLBacked</exclude>
+              </excludes>
+              <testExcludes>
+                  <testExclude>edu/stanford/nlp/patterns/**/</testExclude>
+                  <testExclude>edu/stanford/nlp/semgraph/semgrex/SemgrexPatternTest.java</testExclude>
+              </testExcludes>
+          </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
         <version>1.7</version>
