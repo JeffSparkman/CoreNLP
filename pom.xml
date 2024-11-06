@@ -203,9 +203,12 @@
                   <exclude>edu/stanford/nlp/trees/international/**</exclude>
                   <exclude>edu/stanford/nlp/pipeline/StanfordCoreNLPServer.java</exclude>
                   <exclude>edu/stanford/nlp/pipeline/StanfordCoreNLPClient.java</exclude>
+                  <exclude>edu/stanford/nlp/ie/NERServer.java</exclude>
                   <exclude>edu/stanford/nlp/parser/server/</exclude>
+                  <exclude>edu/stanford/nlp/net/</exclude>
                   <exclude>edu/stanford/nlp/patterns/**/</exclude>
                   <exclude>edu/stanford/nlp/util/GoogleNGramsSQLBacked.java</exclude>
+                  <exclude>edu/stanford/nlp/pipeline/ServerAnnotatorImplementations.java</exclude>
               </excludes>
               <testExcludes>
                   <testExclude>edu/stanford/nlp/patterns/**/</testExclude>
