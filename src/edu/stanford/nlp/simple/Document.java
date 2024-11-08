@@ -311,9 +311,9 @@ public class Document {
    * @param host The hostname of the server.
    * @param port The port the server is running on.
    */
-  public static void useServer(String host, int port) {
-    backend = new ServerAnnotatorImplementations(host, port);
-  }
+//  public static void useServer(String host, int port) {
+//    backend = new ServerAnnotatorImplementations(host, port);
+//  }
 
 
   /**
@@ -329,25 +329,25 @@ public class Document {
    *             false, we will also run a bunch of standard annotations, to cut down on
    *             expected number of round-trips.
    */
-  public static void useServer(String host, int port,
-                               String apiKey, String apiSecret,
-                               boolean lazy) {
-    backend = new ServerAnnotatorImplementations(host, port, apiKey, apiSecret, lazy);
-  }
+//  public static void useServer(String host, int port,
+//                               String apiKey, String apiSecret,
+//                               boolean lazy) {
+//    backend = new ServerAnnotatorImplementations(host, port, apiKey, apiSecret, lazy);
+//  }
 
 
   /** @see Document#useServer(String, int, String, String, boolean) */
-  public static void useServer(String host,
-                               String apiKey, String apiSecret,
-                               boolean lazy) {
-    useServer(host, host.startsWith("http://") ? 80 : 443, apiKey, apiSecret, lazy);
-  }
+//  public static void useServer(String host,
+//                               String apiKey, String apiSecret,
+//                               boolean lazy) {
+//    useServer(host, host.startsWith("http://") ? 80 : 443, apiKey, apiSecret, lazy);
+//  }
 
   /** @see Document#useServer(String, int, String, String, boolean) */
-  public static void useServer(String host,
-                               String apiKey, String apiSecret) {
-    useServer(host, host.startsWith("http://") ? 80 : 443, apiKey, apiSecret, true);
-  }
+//  public static void useServer(String host,
+//                               String apiKey, String apiSecret) {
+//    useServer(host, host.startsWith("http://") ? 80 : 443, apiKey, apiSecret, true);
+//  }
 
 
   /*
@@ -363,32 +363,32 @@ public class Document {
    *     <li>CORENLP_LAZY</li>  (if true, do as much annotation on a single round-trip as possible)
    * </ul>
    */
-  static {
-    String host    = System.getenv("CORENLP_HOST");
-    String portStr = System.getenv("CORENLP_PORT");
-    String key     = System.getenv("CORENLP_KEY");
-    String secret  = System.getenv("CORENLP_SECRET");
-    String lazystr = System.getenv("CORENLP_LAZY");
-    if (host != null) {
-      int port = 443;
-      if (portStr == null) {
-        if (host.startsWith("http://")) {
-          port = 80;
-        }
-      } else {
-        port = Integer.parseInt(portStr);
-      }
-      boolean lazy = true;
-      if (lazystr != null) {
-        lazy = Boolean.parseBoolean(lazystr);
-      }
-      if (key != null && secret != null) {
-        useServer(host, port, key, secret, lazy);
-      } else {
-        useServer(host, port);
-      }
-    }
-  }
+//  static {
+//    String host    = System.getenv("CORENLP_HOST");
+//    String portStr = System.getenv("CORENLP_PORT");
+//    String key     = System.getenv("CORENLP_KEY");
+//    String secret  = System.getenv("CORENLP_SECRET");
+//    String lazystr = System.getenv("CORENLP_LAZY");
+//    if (host != null) {
+//      int port = 443;
+//      if (portStr == null) {
+//        if (host.startsWith("http://")) {
+//          port = 80;
+//        }
+//      } else {
+//        port = Integer.parseInt(portStr);
+//      }
+//      boolean lazy = true;
+//      if (lazystr != null) {
+//        lazy = Boolean.parseBoolean(lazystr);
+//      }
+//      if (key != null && secret != null) {
+//        useServer(host, port, key, secret, lazy);
+//      } else {
+//        useServer(host, port);
+//      }
+//    }
+//  }
 
 
   /**
