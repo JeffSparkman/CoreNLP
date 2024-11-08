@@ -29,9 +29,9 @@ public class JollyDayHolidays implements Env.Binder {
 
   private static final Redwood.RedwoodChannels logger = Redwood.channels(JollyDayHolidays.class);
 
-  private HolidayManager holidayManager;
+//  private HolidayManager holidayManager;
   // private CollectionValuedMap<String, JollyHoliday> holidays;
-  private Map<String, JollyHoliday> holidays;
+//  private Map<String, JollyHoliday> holidays;
   private String varPrefix = "JH_";
 
   @Override
@@ -53,38 +53,38 @@ public class JollyDayHolidays implements Env.Binder {
       } else {
         throw new IllegalArgumentException("Unsupported " + prefix + "pathtype = " + xmlPathType);
       }
-      UrlManagerParameter ump = new UrlManagerParameter(holidayXmlUrl, managerProps);
-      holidayManager = HolidayManager.getInstance(ump);
+//      UrlManagerParameter ump = new UrlManagerParameter(holidayXmlUrl, managerProps);
+//      holidayManager = HolidayManager.getInstance(ump);
     } catch (java.net.MalformedURLException e) {
       throw new RuntimeException(e);
     }
-    if (!(holidayManager instanceof MyXMLManager)) {
-      throw new AssertionError("Did not get back JollyDayHolidays$MyXMLManager");
-    }
-    Configuration config = ((MyXMLManager) holidayManager).getConfiguration();
-    holidays = getAllHolidaysMap(config);
+//    if (!(holidayManager instanceof MyXMLManager)) {
+//      throw new AssertionError("Did not get back JollyDayHolidays$MyXMLManager");
+//    }
+//    Configuration config = ((MyXMLManager) holidayManager).getConfiguration();
+//    holidays = getAllHolidaysMap(config);
   }
 
   @Override
   public void bind(Env env) {
-    if (holidays != null) {
-      for (Map.Entry<String, JollyHoliday> holidayEntry : holidays.entrySet()) {
-        JollyHoliday jh = holidayEntry.getValue();
-        env.bind(varPrefix + holidayEntry.getKey(), jh);
-      }
-    }
+//    if (holidays != null) {
+//      for (Map.Entry<String, JollyHoliday> holidayEntry : holidays.entrySet()) {
+//        JollyHoliday jh = holidayEntry.getValue();
+//        env.bind(varPrefix + holidayEntry.getKey(), jh);
+//      }
+//    }
   }
 
   public Map<String, JollyHoliday> getAllHolidaysMap(Set<de.jollyday.config.Holiday> allHolidays) {
     Map<String, JollyHoliday> map = Generics.newHashMap();
-    for (de.jollyday.config.Holiday h : allHolidays) {
-      String descKey = h.getDescriptionPropertiesKey();
-      if (descKey != null) {
-        descKey = descKey.replaceAll(".*\\.","");
-        JollyHoliday jh = new JollyHoliday(descKey, holidayManager, h);
-        map.put(jh.label, jh);
-      }
-    }
+//    for (de.jollyday.config.Holiday h : allHolidays) {
+//      String descKey = h.getDescriptionPropertiesKey();
+//      if (descKey != null) {
+//        descKey = descKey.replaceAll(".*\\.","");
+//        JollyHoliday jh = new JollyHoliday(descKey, holidayManager, h);
+//        map.put(jh.label, jh);
+//      }
+//    }
     return map;
   }
 
@@ -95,14 +95,14 @@ public class JollyDayHolidays implements Env.Binder {
 
   public CollectionValuedMap<String, JollyHoliday> getAllHolidaysCVMap(Set<de.jollyday.config.Holiday> allHolidays) {
     CollectionValuedMap<String, JollyHoliday> map = new CollectionValuedMap<>();
-    for (de.jollyday.config.Holiday h:allHolidays) {
-      String descKey = h.getDescriptionPropertiesKey();
-      if (descKey != null) {
-        descKey = descKey.replaceAll(".*\\.","");
-        JollyHoliday jh = new JollyHoliday(descKey, holidayManager, h);
-        map.add(jh.label, jh);
-      }
-    }
+//    for (de.jollyday.config.Holiday h:allHolidays) {
+//      String descKey = h.getDescriptionPropertiesKey();
+//      if (descKey != null) {
+//        descKey = descKey.replaceAll(".*\\.","");
+//        JollyHoliday jh = new JollyHoliday(descKey, holidayManager, h);
+//        map.add(jh.label, jh);
+//      }
+//    }
     return map;
   }
 
@@ -112,30 +112,30 @@ public class JollyDayHolidays implements Env.Binder {
   }
 
   public static void getAllHolidays(Holidays holidays, Set<de.jollyday.config.Holiday> allHolidays) {
-    for (Method m : holidays.getClass().getMethods()) {
-      if (isGetter(m) && m.getReturnType() == List.class) {
-        try {
-          List<de.jollyday.config.Holiday> l = (List<de.jollyday.config.Holiday>) m.invoke(holidays);
-          allHolidays.addAll(l);
-        } catch (Exception e) {
-          throw new RuntimeException("Cannot create set of holidays.", e);
-        }
-      }
-    }
+//    for (Method m : holidays.getClass().getMethods()) {
+//      if (isGetter(m) && m.getReturnType() == List.class) {
+//        try {
+//          List<de.jollyday.config.Holiday> l = (List<de.jollyday.config.Holiday>) m.invoke(holidays);
+//          allHolidays.addAll(l);
+//        } catch (Exception e) {
+//          throw new RuntimeException("Cannot create set of holidays.", e);
+//        }
+//      }
+//    }
   }
 
   public static void getAllHolidays(Configuration config, Set<de.jollyday.config.Holiday> allHolidays) {
-    Holidays holidays = config.getHolidays();
-    getAllHolidays(holidays, allHolidays);
-    List<Configuration> subConfigs = config.getSubConfigurations();
-    for (Configuration c:subConfigs) {
-      getAllHolidays(c, allHolidays);
-    }
+//    Holidays holidays = config.getHolidays();
+//    getAllHolidays(holidays, allHolidays);
+//    List<Configuration> subConfigs = config.getSubConfigurations();
+//    for (Configuration c:subConfigs) {
+//      getAllHolidays(c, allHolidays);
+//    }
   }
 
   public static Set<de.jollyday.config.Holiday> getAllHolidays(Configuration config) {
     Set<de.jollyday.config.Holiday> allHolidays = Generics.newHashSet();
-    getAllHolidays(config, allHolidays);
+//    getAllHolidays(config, allHolidays);
     return allHolidays;
   }
 
