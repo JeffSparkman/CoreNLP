@@ -70,14 +70,17 @@ public class FilePathProcessor {
    */
   public static void processPath(File path, FileFilter filter, FileProcessor processor) {
     if (path.isDirectory()) {
-      // if path is a directory, look into it
-      File[] directoryListing = path.listFiles(filter);
-      if (directoryListing == null) {
-        throw new IllegalArgumentException("Directory access problem for: " + path);
-      }
-      for (File file : directoryListing) {
-        processPath(file, filter, processor);
-      }
+        
+        throw new RuntimeException("Don't process directories.");
+        
+//      // if path is a directory, look into it
+//      File[] directoryListing = path.listFiles(filter);
+//      if (directoryListing == null) {
+//        throw new IllegalArgumentException("Directory access problem for: " + path);
+//      }
+//      for (File file : directoryListing) {
+//        processPath(file, filter, processor);
+//      }
     } else {
       // it's already passed the filter or was uniquely specified
       // if (filter.accept(path))
